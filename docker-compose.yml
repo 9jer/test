@@ -1,0 +1,18 @@
+version: '3.9'
+
+volumes:
+  pg_booking:
+
+services:
+  booking_app_db:
+    image: postgres:16
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: postgres # Имя пользователя
+      POSTGRES_PASSWORD: postgres # Пароль пользователя
+      POSTGRES_DB: booking_app_db # Имя базы данных
+    ports:
+        - "5433:5432" # Порт для подключения к базе
+    volumes:
+      - ./data:/data/db # Монтирование данных
